@@ -1,6 +1,8 @@
 <!-- TODO: determine if we even need a router outlet. If not, remove Angular router dependency as well? -->
 <router-outlet></router-outlet>
 <h1>Pick that color</h1>
+<app-search-bar (searchTermUpdated)="filter($event)"></app-search-bar>
 <section class="tile-container">
-  <app-color-tile *ngFor="let color of colors" [color]="color"></app-color-tile>
+  <app-color-tile *ngFor="let color of filteredColors" [color]="color"></app-color-tile>
+  <!-- TODO: empty state when no matches -->
 </section>

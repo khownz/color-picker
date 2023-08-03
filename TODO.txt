@@ -1,0 +1,3 @@
+- preview: transparent image / big square
+- search functionality
+- route params (from & to)
