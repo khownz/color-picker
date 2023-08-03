@@ -1,4 +1,4 @@
 export type Color = {
-    name: string;
-    hex: string;
-}
+  name: string;
+  hex: string;
+};
