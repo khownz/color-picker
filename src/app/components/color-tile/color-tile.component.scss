@@ -1,0 +1,25 @@
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.25rem;
+  border: 1px solid #e5e5e5;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.25s;
+
+  &:hover {
+    border: none;
+    box-shadow:
+      rgba(50, 50, 50, 0.25) 0px 14px 28px,
+      rgba(50, 50, 50, 0.22) 0px 10px 10px;
+  }
+
+  .content {
+    margin-top: 6rem;
+    background-color: white;
+    padding: 0.5rem;
+
+    font-weight: 700;
+  }
+}
