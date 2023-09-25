@@ -1,6 +1,6 @@
-import {ColorV2} from '../../types/color';
+import {Color} from '../../types/color';
 
-export const NCS: ColorV2[] = [
+export const NCS: Color[] = [
   {
     'colorCode': 'S 0502-B',
     'name': 'S 0502-B',

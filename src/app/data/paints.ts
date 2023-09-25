@@ -8,7 +8,7 @@ import {SILOXAN} from './color-fans/siloxan';
 const SIGMA_BASE = [...RAL, ...NCS, ...VOICE_OF_COLOUR];
 
 // Exception: paints with `siloxan` should additionally use the siloxan list
-const SILOXAN_BASE = [...SIGMA_BASE, ...SILOXAN];
+const SILOXAN_BASE = [...SILOXAN, ...SIGMA_BASE];
 
 export const PAINTS: Paint[] = [
   // Primers binnenmuren

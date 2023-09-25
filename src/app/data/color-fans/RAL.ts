@@ -1,9 +1,9 @@
-import {ColorV2} from '../../types/color';
+import {Color} from '../../types/color';
 
 // TODO: add list subset when available
-export const RAL_SUBSET_SIGMAFLOOR: ColorV2[] = [];
+export const RAL_SUBSET_SIGMAFLOOR: Color[] = [];
 
-export const RAL: ColorV2[] = [
+export const RAL: Color[] = [
   {
     'colorCode': 'RAL 5000',
     'name': 'RAL 5000',

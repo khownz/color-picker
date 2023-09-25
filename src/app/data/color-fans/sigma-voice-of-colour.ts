@@ -1,6 +1,6 @@
-import {ColorV2} from '../../types/color';
+import {Color} from '../../types/color';
 
-export const VOICE_OF_COLOUR: ColorV2[] = [
+export const VOICE_OF_COLOUR: Color[] = [
   {
     'colorCode': 'PPG10-01',
     'name': 'Dark Water',

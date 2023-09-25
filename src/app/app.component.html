@@ -1,8 +1,19 @@
-<!-- TODO: determine if we even need a router outlet. If not, remove Angular router dependency as well? -->
+<!-- TODO: determine if we even need a router outlet. If not, remove Angular router dependency as well? However, we might need the router dependency to read some QS params! -->
 <router-outlet></router-outlet>
 <h1>Pick that color</h1>
-<app-search-bar (searchTermUpdated)="filter($event)"></app-search-bar>
-<section class="tile-container">
-  <app-color-tile *ngFor="let color of filteredColors" [color]="color"></app-color-tile>
-  <!-- TODO: empty state when no matches -->
+
+<!-- TODO: extract to components -->
+<h3>Paints</h3>
+<!-- TODO: select-autocomplete style, as this list is way too large -->
+<select name="paint" id="paint" (change)="onPaintSelectionChange($event)">
+  <option value="">--- Please select an option ---</option>
+  <option *ngFor="let paint of paints" [value]="paint.name">{{ paint.name }}</option>
+</select>
+
+<section *ngIf="selectedPaint">
+  <app-search-bar (searchTermUpdated)="filter($event)"></app-search-bar>
+  <section class="tile-container">
+    <app-color-tile *ngFor="let color of filteredColors" [color]="color"></app-color-tile>
+    <!-- TODO: empty state when no matches -->
+  </section>
 </section>

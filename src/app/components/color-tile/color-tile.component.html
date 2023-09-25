@@ -1,3 +1,5 @@
 <article class="tile" [ngStyle]="{'background-color': color.hex}">
-  <div class="content">{{ color.name | titlecase }}</div>
+  <div class="content">
+    <strong>{{ color.name | titlecase }}</strong> - {{ color.colorCode }}
+  </div>
 </article>
