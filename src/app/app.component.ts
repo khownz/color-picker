@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
 import {ColorTileComponent} from './components/color-tile/color-tile.component';
-import {SearchBarComponent} from './components/search-bar/search-bar.component';
 import {PAINTS} from './data/paints';
 import {Paint} from './types/paint';
 import {Color} from './types/color';
@@ -24,7 +23,6 @@ const minCharsBeforeSearch = 2;
     CommonModule,
     RouterOutlet,
     ColorTileComponent,
-    SearchBarComponent,
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
@@ -34,9 +32,6 @@ const minCharsBeforeSearch = 2;
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'color-picker';
-  filteredColors: Color[] | undefined;
-
   paints = PAINTS;
   selectedPaint: Paint | undefined;
 
@@ -47,28 +42,16 @@ export class AppComponent {
     map((value) => this._filterPaintsByName(value || '')),
   );
 
+  colorSearchTerm = new FormControl('');
+  filteredColors$ = this.colorSearchTerm.valueChanges.pipe(
+    startWith(''),
+    map((value) => this._filterColorsByNameOrHex(value || '')),
+  );
+
   onPaintSelectionChange(event: MatAutocompleteSelectedEvent) {
     const paintName = event.option.value;
     this._selectPaintByName(paintName);
-
-    // TODO: iso resetting, we probably just wat to search again with the same searchTerm,
-    //  as we currently have no way to clear the searchTerm!
     this._resetFilteredColors();
-  }
-
-  filterColors(searchTerm: string): void {
-    if (this.selectedPaint) {
-      // TODO: more lenient search mechanism (fuzzy search)?
-      if (searchTerm.length >= minCharsBeforeSearch) {
-        this.filteredColors = this.selectedPaint?.colorList.filter((color) => {
-          const nameMatches = color.name.toLowerCase().includes(searchTerm.toLowerCase());
-          const hexMatches = color.hex.toLowerCase().includes(searchTerm.toLowerCase());
-          return nameMatches || hexMatches;
-        });
-      } else {
-        this.filteredColors = this.selectedPaint?.colorList;
-      }
-    }
   }
 
   private _filterPaintsByName(searchTerm: string): Paint[] {
@@ -76,11 +59,28 @@ export class AppComponent {
     return this.paints.filter((option) => option.name.toLowerCase().includes(filterValue));
   }
 
-  private _selectPaintByName(paintName: string) {
+  private _selectPaintByName(paintName: string): void {
     this.selectedPaint = PAINTS.find((paint) => paint.name === paintName);
   }
 
+  private _filterColorsByNameOrHex(searchTerm: string): Color[] {
+    if (this.selectedPaint) {
+      // TODO: more lenient search mechanism (fuzzy search)?
+      if (searchTerm) {
+        return this.selectedPaint?.colorList.filter((color) => {
+          const nameMatches = color.name.toLowerCase().includes(searchTerm.toLowerCase());
+          const hexMatches = color.hex.toLowerCase().includes(searchTerm.toLowerCase());
+          return nameMatches || hexMatches;
+        });
+      } else {
+        return this.selectedPaint?.colorList;
+      }
+    } else {
+      return [];
+    }
+  }
+
   private _resetFilteredColors(): void {
-    this.filteredColors = [];
+    this.colorSearchTerm.setValue('');
   }
 }

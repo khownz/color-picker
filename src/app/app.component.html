@@ -5,10 +5,10 @@
 <!-- TODO: extract to components -->
 <h2>Paints</h2>
 
-<!-- TODO: extract to separate component -->
+<!-- TODO: extract to separate component? -->
 <!-- TODO: extract inline style to scss file -->
 <mat-form-field style="width: 345px">
-  <mat-label>Paint</mat-label>
+  <mat-label>Search Paint</mat-label>
   <input
     type="text"
     placeholder="Select your paint"
@@ -28,10 +28,13 @@
 </mat-form-field>
 
 <section *ngIf="selectedPaint">
-  <!-- TODO: use material input field iso own search bar -->
-  <app-search-bar (searchTermUpdated)="filterColors($event)"></app-search-bar>
+  <mat-form-field>
+    <mat-label>Search Color</mat-label>
+    <input type="text" placeholder="e.g. RAL 9016" matInput [formControl]="colorSearchTerm" />
+  </mat-form-field>
+
   <section class="tile-container">
-    <app-color-tile *ngFor="let color of filteredColors" [color]="color"></app-color-tile>
+    <app-color-tile *ngFor="let color of filteredColors$ | async" [color]="color"></app-color-tile>
     <!-- TODO: empty state when no matches -->
   </section>
 </section>
