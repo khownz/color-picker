@@ -10,11 +10,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {map, startWith} from 'rxjs';
-
-// TODO: double check if min chars before search is desired behaviour,
-//  Probably not, as you need to select a paint first, and then see nothing until you start searching.
-//  Feels weird.
-const minCharsBeforeSearch = 2;
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-root',
@@ -27,12 +23,12 @@ const minCharsBeforeSearch = 2;
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatCardModule,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  paints = PAINTS;
   selectedPaint: Paint | undefined;
 
   // TODO: extract to separate component?
@@ -56,7 +52,7 @@ export class AppComponent {
 
   private _filterPaintsByName(searchTerm: string): Paint[] {
     const filterValue = searchTerm.toLowerCase();
-    return this.paints.filter((option) => option.name.toLowerCase().includes(filterValue));
+    return PAINTS.filter((option) => option.name.toLowerCase().includes(filterValue));
   }
 
   private _selectPaintByName(paintName: string): void {

@@ -1,40 +1,50 @@
 <!-- TODO: determine if we even need a router outlet. If not, remove Angular router dependency as well? However, we might need the router dependency to read some QS params! -->
 <router-outlet></router-outlet>
-<h1>Pick that color</h1>
 
-<!-- TODO: extract to components -->
-<h2>Paints</h2>
+<section class="page-container">
+  <h1>Pick that color</h1>
 
-<!-- TODO: extract to separate component? -->
-<!-- TODO: extract inline style to scss file -->
-<mat-form-field style="width: 345px">
-  <mat-label>Search Paint</mat-label>
-  <input
-    type="text"
-    placeholder="Select your paint"
-    matInput
-    [formControl]="paintAutocomplete"
-    [matAutocomplete]="auto"
-  />
-  <mat-autocomplete
-    autoActiveFirstOption
-    #auto="matAutocomplete"
-    (optionSelected)="onPaintSelectionChange($event)"
-  >
-    <mat-option *ngFor="let paint of filteredPaints$ | async" [value]="paint.name">
-      {{ paint.name }}
-    </mat-option>
-  </mat-autocomplete>
-</mat-form-field>
+  <!-- TODO: General page styling -->
+  <h2>Paints</h2>
 
-<section *ngIf="selectedPaint">
-  <mat-form-field>
-    <mat-label>Search Color</mat-label>
-    <input type="text" placeholder="e.g. RAL 9016" matInput [formControl]="colorSearchTerm" />
+  <!-- TODO: extract to separate component? -->
+  <mat-form-field class="paint-autocomplete">
+    <mat-label>Search Paint</mat-label>
+    <input
+      type="text"
+      placeholder="Select your paint"
+      matInput
+      [formControl]="paintAutocomplete"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete
+      autoActiveFirstOption
+      #auto="matAutocomplete"
+      (optionSelected)="onPaintSelectionChange($event)"
+    >
+      <mat-option *ngFor="let paint of filteredPaints$ | async" [value]="paint.name">
+        {{ paint.name }}
+      </mat-option>
+    </mat-autocomplete>
   </mat-form-field>
 
-  <section class="tile-container">
-    <app-color-tile *ngFor="let color of filteredColors$ | async" [color]="color"></app-color-tile>
-    <!-- TODO: empty state when no matches -->
+  <section *ngIf="selectedPaint">
+    <mat-form-field>
+      <mat-label>Search Color</mat-label>
+      <input type="text" placeholder="e.g. RAL 9016" matInput [formControl]="colorSearchTerm" />
+    </mat-form-field>
+
+    <section class="tile-container">
+      <app-color-tile
+        *ngFor="let color of filteredColors$ | async"
+        [color]="color"
+      ></app-color-tile>
+    </section>
+
+    <section *ngIf="colorSearchTerm.value && !(filteredColors$ | async)?.length">
+      <mat-card>
+        <mat-card-content>No color found</mat-card-content>
+      </mat-card>
+    </section>
   </section>
 </section>
