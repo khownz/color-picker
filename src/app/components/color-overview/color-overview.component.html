@@ -1,0 +1,49 @@
+<section class="page-container">
+  <h1>Pick that color</h1>
+
+  <!-- TODO: General page styling -->
+  <h2>Paints</h2>
+
+  <!-- TODO: extract to separate component? -->
+  <mat-form-field class="paint-autocomplete">
+    <mat-label>Search Paint</mat-label>
+    <input
+      type="text"
+      placeholder="Select your paint"
+      matInput
+      [formControl]="paintAutocomplete"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete
+      autoActiveFirstOption
+      #auto="matAutocomplete"
+      (optionSelected)="onPaintSelectionChange($event)"
+    >
+      <mat-option *ngFor="let paint of filteredPaints$ | async" [value]="paint.name">
+        {{ paint.name }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <section *ngIf="selectedPaint">
+    <!-- TODO: color search might be a bit too small. See if this can be improved. -->
+    <mat-form-field>
+      <mat-label>Search Color</mat-label>
+      <input type="text" placeholder="e.g. RAL 9016" matInput [formControl]="colorSearchTerm" />
+    </mat-form-field>
+
+    <section class="tile-container">
+      <app-color-tile
+        *ngFor="let color of filteredColors$ | async"
+        [color]="color"
+      ></app-color-tile>
+    </section>
+
+    <!-- TODO: improve empty state styling -->
+    <section *ngIf="colorSearchTerm.value && !(filteredColors$ | async)?.length">
+      <mat-card>
+        <mat-card-content>No color found</mat-card-content>
+      </mat-card>
+    </section>
+  </section>
+</section>

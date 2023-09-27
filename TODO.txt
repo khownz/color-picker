@@ -1,3 +1,5 @@
+- General page layout / styling
 - preview: transparent image / big square
-- search functionality
+- search functionality --> DONE
 - route params (from & to)
+--> op basis van QS param verf voorselecteren

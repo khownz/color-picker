@@ -1,0 +1,17 @@
+.page-container {
+  // TODO: this is just a quick fix to add some spacing around the central content.
+  //  Needs to be replaced by a better alternative!
+  margin: 5rem;
+}
+
+.paint-autocomplete {
+  // width matches required chars to show the longest paint name.
+  // Might need to verify how this looks on mobile
+  width: 345px;
+}
+
+.tile-container {
+  display: grid;
+  grid-gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
