@@ -1,7 +1,6 @@
 - General page layout / styling
-- preview: transparent image / big square
-- search functionality --> DONE
-- route params (from & to)
---> op basis van route param verf voorselecteren - DONE
+- preview: transparent image / big square? OR show "check icon" on hover of color-tile.
+- search functionality - DONE
+- route params (from & to) --> op basis van route param verf voorselecteren - DONE
 - Change copy to Dutch - DONE
-- Add Logo & font / color matching
+- Add Kreapaint/store Logo & font / color matching
