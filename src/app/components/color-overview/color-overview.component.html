@@ -1,19 +1,21 @@
 <section class="page-container">
-  <h1>Pick that color</h1>
+  <h1>Kreapaint Color Picker</h1>
 
   <!-- TODO: General page styling -->
-  <h2>Paints</h2>
 
   <!-- TODO: extract to separate component? -->
   <mat-form-field class="paint-autocomplete">
-    <mat-label>Search Paint</mat-label>
+    <mat-label>Kies je verf</mat-label>
     <input
       type="text"
-      placeholder="Select your paint"
+      placeholder="Selecteer de gewenste verf"
       matInput
       [formControl]="paintAutocomplete"
       [matAutocomplete]="auto"
     />
+    <mat-icon *ngIf="selectedPaint && paintAutocomplete.value === selectedPaint.name" matSuffix>
+      check
+    </mat-icon>
     <mat-autocomplete
       autoActiveFirstOption
       #auto="matAutocomplete"
@@ -28,11 +30,11 @@
   <section *ngIf="selectedPaint">
     <!-- TODO: color search field might be a bit too small. It's not noticeable enough. See if this can be improved. -->
     <mat-form-field>
-      <mat-label>Search Color</mat-label>
+      <mat-label>Zoek je kleur</mat-label>
       <mat-icon matPrefix>search</mat-icon>
       <input
         type="text"
-        placeholder="e.g. RAL 9016"
+        placeholder="bv. RAL 9016"
         matInput
         [formControl]="colorSearchTerm"
         autofocus
@@ -50,7 +52,10 @@
     <!-- TODO: improve empty state styling -->
     <section *ngIf="colorSearchTerm.value && !(filteredColors$ | async)?.length">
       <mat-card>
-        <mat-card-content>No color found</mat-card-content>
+        <mat-card-content>
+          <p>We konden deze kleur helaas niet vinden.</p>
+          <p>Ben je op zoek naar iets specifiek? Contacteer ons gerust!</p>
+        </mat-card-content>
       </mat-card>
     </section>
   </section>

@@ -3,5 +3,5 @@
 - search functionality --> DONE
 - route params (from & to)
 --> op basis van route param verf voorselecteren - DONE
-- Change copy to Dutch
+- Change copy to Dutch - DONE
 - Add Logo & font / color matching
