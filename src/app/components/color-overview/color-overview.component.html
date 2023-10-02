@@ -43,6 +43,7 @@
       <app-color-tile
         *ngFor="let color of filteredColors$ | async"
         [color]="color"
+        (click)="onColorTileClicked(color)"
       ></app-color-tile>
     </section>
 

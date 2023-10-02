@@ -12,6 +12,7 @@ import {map, startWith} from 'rxjs';
 import {PAINTS} from '../../data/paints';
 import {Color} from '../../types/color';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSnackBar, MatSnackBarConfig, MatSnackBarModule} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-color-overview',
@@ -26,6 +27,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatOptionModule,
     ReactiveFormsModule,
     MatIconModule,
+    MatSnackBarModule,
   ],
   templateUrl: './color-overview.component.html',
   styleUrls: ['./color-overview.component.scss'],
@@ -48,6 +50,8 @@ export class ColorOverviewComponent implements OnInit {
     map((value) => this._filterColorsByNameOrHex(value || '')),
   );
 
+  constructor(private readonly _snackBar: MatSnackBar) {}
+
   ngOnInit(): void {
     if (this.initialPaintName) {
       this._selectPaintByName(this.initialPaintName);
@@ -61,6 +65,11 @@ export class ColorOverviewComponent implements OnInit {
     const paintName = event.option.value;
     this._selectPaintByName(paintName);
     this._resetFilteredColors();
+  }
+
+  onColorTileClicked(color: Color) {
+    this._copyColorCodeToClipBoard(color);
+    this._showCopyToClipboardSuccess(color);
   }
 
   private _filterPaintsByName(searchTerm: string): Paint[] {
@@ -93,5 +102,15 @@ export class ColorOverviewComponent implements OnInit {
 
   private _resetFilteredColors(): void {
     this.colorSearchTerm.setValue('');
+  }
+
+  private _copyColorCodeToClipBoard(color: Color): void {
+    navigator.clipboard.writeText(color.colorCode);
+  }
+
+  private _showCopyToClipboardSuccess(color: Color): void {
+    const message = `Kleurcode gekopiëerd: ${color.colorCode}`;
+    const config: MatSnackBarConfig = {duration: 3000, verticalPosition: 'top'};
+    this._snackBar.open(message, undefined, config);
   }
 }

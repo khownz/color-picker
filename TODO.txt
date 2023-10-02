@@ -2,4 +2,6 @@
 - preview: transparent image / big square
 - search functionality --> DONE
 - route params (from & to)
---> op basis van QS param verf voorselecteren
+--> op basis van route param verf voorselecteren - DONE
+- Change copy to Dutch
+- Add Logo & font / color matching
