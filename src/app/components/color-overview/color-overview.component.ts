@@ -11,6 +11,7 @@ import {Paint} from '../../types/paint';
 import {map, startWith} from 'rxjs';
 import {PAINTS} from '../../data/paints';
 import {Color} from '../../types/color';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-color-overview',
@@ -24,6 +25,7 @@ import {Color} from '../../types/color';
     MatInputModule,
     MatOptionModule,
     ReactiveFormsModule,
+    MatIconModule,
   ],
   templateUrl: './color-overview.component.html',
   styleUrls: ['./color-overview.component.scss'],
@@ -47,7 +49,12 @@ export class ColorOverviewComponent implements OnInit {
   );
 
   ngOnInit(): void {
-    console.log(this.initialPaintName);
+    if (this.initialPaintName) {
+      this._selectPaintByName(this.initialPaintName);
+      // TODO: see if this can be improved: currently only sets value of text field,
+      //  but does not actually "select" the value within the autocomplete
+      this.paintAutocomplete.setValue(this.initialPaintName);
+    }
   }
 
   onPaintSelectionChange(event: MatAutocompleteSelectedEvent) {
@@ -62,7 +69,9 @@ export class ColorOverviewComponent implements OnInit {
   }
 
   private _selectPaintByName(paintName: string): void {
-    this.selectedPaint = PAINTS.find((paint) => paint.name === paintName);
+    this.selectedPaint = PAINTS.find(
+      (paint) => paint.name.toLowerCase() === paintName.toLowerCase(),
+    );
   }
 
   private _filterColorsByNameOrHex(searchTerm: string): Color[] {

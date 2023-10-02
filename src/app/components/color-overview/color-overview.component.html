@@ -26,10 +26,17 @@
   </mat-form-field>
 
   <section *ngIf="selectedPaint">
-    <!-- TODO: color search might be a bit too small. See if this can be improved. -->
+    <!-- TODO: color search field might be a bit too small. It's not noticeable enough. See if this can be improved. -->
     <mat-form-field>
       <mat-label>Search Color</mat-label>
-      <input type="text" placeholder="e.g. RAL 9016" matInput [formControl]="colorSearchTerm" />
+      <mat-icon matPrefix>search</mat-icon>
+      <input
+        type="text"
+        placeholder="e.g. RAL 9016"
+        matInput
+        [formControl]="colorSearchTerm"
+        autofocus
+      />
     </mat-form-field>
 
     <section class="tile-container">
