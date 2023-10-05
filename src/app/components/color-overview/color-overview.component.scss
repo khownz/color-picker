@@ -5,6 +5,7 @@
 
   .main-header {
     display: flex;
+    flex-wrap: wrap-reverse;
     align-items: center;
 
     .logo {
@@ -21,6 +22,7 @@
   // width matches required chars to show the longest paint name.
   // Might need to verify how this looks on mobile
   width: 345px;
+  max-width: 100%;
 }
 
 .tile-container {

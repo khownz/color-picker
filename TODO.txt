@@ -5,7 +5,7 @@
 - Change copy to Dutch - DONE
 - Add Interio Logo - DONE
 - font / color matching - DONE
-- Instructies: tekstueel uitleggen klik = copy
+- Instructies: tekstueel uitleggen klik = copy - DONE
 - Hex search vervangen door color code search - DONE
 - On-hover, icoontje (kopieer icoon)
 - Hosting / deployment/ github pages
