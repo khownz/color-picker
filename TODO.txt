@@ -1,7 +1,12 @@
-- General page layout / styling
-- preview: transparent image / big square? OR show "check icon" on hover of color-tile.
+- General page layout / styling? - NTH
+- preview: transparent image / big square? OR show "check icon" on hover of color-tile. - NTH
 - search functionality - DONE
 - route params (from & to) --> op basis van route param verf voorselecteren - DONE
 - Change copy to Dutch - DONE
 - Add Interio Logo
 - font / color matching - DONE
+- Instructies: tekstueel uitleggen klik = copy
+- Hex search vervangen door color code search
+- On-hover, icoontje (kopieer icoon)
+- Hosting / deployment/ github pages
+- nice-to-have: filter per kleurfamilie
