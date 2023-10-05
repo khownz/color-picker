@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 0.25rem;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--color-mercury);
   overflow: hidden;
   cursor: pointer;
   transition: 0.25s;
@@ -13,11 +13,26 @@
     box-shadow:
       rgba(50, 50, 50, 0.25) 0px 14px 28px,
       rgba(50, 50, 50, 0.22) 0px 10px 10px;
+
+    .copy-icon {
+      display: block;
+    }
   }
 
   .content {
     margin-top: 6rem;
     background-color: white;
     padding: 0.5rem;
+  }
+
+  .copy-icon {
+    display: none;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    color: var(--color-tundora);
+    background-color: var(--color-offwhite-alpha);
+    padding: 0.5rem;
+    border-radius: 5rem;
   }
 }

@@ -1,3 +1,10 @@
+:root {
+  --color-tundora: #404040;
+  --color-westar: #e4e2dd;
+  --color-mercury: #e5e5e5;
+  --color-offwhite-alpha: #fefefef0;
+}
+
 html,
 body {
   height: 100%;
@@ -6,7 +13,7 @@ body {
 body {
   font-family: Inter, Roboto, Helvetica, Arial, sans-serif;
   font-size: 14px;
-  color: #404040;
+  color: var(--color-tundora);
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

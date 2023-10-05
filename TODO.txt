@@ -7,6 +7,6 @@
 - font / color matching - DONE
 - Instructies: tekstueel uitleggen klik = copy - DONE
 - Hex search vervangen door color code search - DONE
-- On-hover, icoontje (kopieer icoon)
+- On-hover, icoontje (kopieer icoon) - DONE
 - Hosting / deployment/ github pages
 - nice-to-have: filter per kleurfamilie
