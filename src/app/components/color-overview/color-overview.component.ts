@@ -85,7 +85,6 @@ export class ColorOverviewComponent implements OnInit {
 
   private _filterColorsByNameOrHex(searchTerm: string): Color[] {
     if (this.selectedPaint) {
-      // TODO: more lenient search mechanism (fuzzy search)?
       if (searchTerm) {
         return this.selectedPaint?.colorList.filter((color) => {
           const nameMatches = color.name.toLowerCase().includes(searchTerm.toLowerCase());
