@@ -89,8 +89,8 @@ export class ColorOverviewComponent implements OnInit {
       if (searchTerm) {
         return this.selectedPaint?.colorList.filter((color) => {
           const nameMatches = color.name.toLowerCase().includes(searchTerm.toLowerCase());
-          const hexMatches = color.hex.toLowerCase().includes(searchTerm.toLowerCase());
-          return nameMatches || hexMatches;
+          const colorCodeMatches = color.colorCode.toLowerCase().includes(searchTerm.toLowerCase());
+          return nameMatches || colorCodeMatches;
         });
       } else {
         return this.selectedPaint?.colorList;
