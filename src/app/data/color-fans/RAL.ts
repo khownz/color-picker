@@ -1,8 +1,5 @@
 import {Color} from '../../types/color';
 
-// TODO: add list subset when available
-export const RAL_SUBSET_SIGMAFLOOR: Color[] = [];
-
 export const RAL: Color[] = [
   {
     'colorCode': 'RAL 5000',
@@ -735,3 +732,6 @@ export const RAL: Color[] = [
     'hex': '#D5C893',
   },
 ];
+
+// no final subset received, just instructed to use RAL set
+export const RAL_SUBSET_SIGMAFLOOR: Color[] = RAL;

@@ -3,4 +3,5 @@
 - search functionality - DONE
 - route params (from & to) --> op basis van route param verf voorselecteren - DONE
 - Change copy to Dutch - DONE
-- Add Kreapaint/store Logo & font / color matching
+- Add Interio Logo
+- font / color matching - DONE
